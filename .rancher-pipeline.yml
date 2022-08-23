@@ -1,5 +1,13 @@
+stages:
+- name: Build docker Image
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: api-poc
+  when:
+    branch:
+      include:
+      - main
 timeout: 60
-branch:
-  include:
-  - main
 notification: {}
