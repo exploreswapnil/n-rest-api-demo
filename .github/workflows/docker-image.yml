@@ -18,8 +18,10 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'docker.io/swapnil13cs56/n-api-poc:${{ github.sha }}'
-          format: 'table'
-          exit-code: '1'
-          ignore-unfixed: true
-          vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+      - name: Upload Trivy scan results to github Security Tab
+        uses: github/codeql-action/upload-sarfi@v2
+        if: always()
+        with:
+         sarif_file: 'trivy-results.sarif'
