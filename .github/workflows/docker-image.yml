@@ -13,11 +13,11 @@ jobs:
         uses: actions/checkout@v2
       - name: Build an image from Dockerfile
         run: |
-          docker build -t docker.io/swapnil13cs56/n-api-poc:${{ github.sha }} .
+          docker build -t docker.io/swapnil13cs56/tcp-test-registry:${{ github.sha }} .
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'docker.io/swapnil13cs56/n-api-poc:${{ github.sha }}'
+          image-ref: 'docker.io/swapnil13cs56/tcp-test-registry:${{ github.sha }}'
           format: 'sarif'
           output: 'trivy-results.sarif'
         env:
