@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Build an image from Dockerfile
+      - name: Build image using Dockerfile
         run: |
           docker build -t docker.io/swapnil13cs56/n-api-poc:${{ github.sha }} .
       - name: Run Trivy vulnerability scanner
